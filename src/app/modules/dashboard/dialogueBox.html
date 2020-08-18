@@ -105,7 +105,29 @@ Top row ends here
 
   Ends here
   -->
+  <div *ngFor="let cate of IconPicker | keyvalue">
+    <div *ngIf="cate =='IcoFont' ">
+      <div *ngFor="let subdiv of cate | keyvalue">
+        <div *ngFor="let icon of subdiv">
+          <div class="center" >
+            <mat-icon>  <span [class]="'icofont '+icon" ></span> </mat-icon>
+            <span class="icon-item-title">{{icon}}</span>
+          </div>
+      </div>
+    </div>
+  </div>
 
+  <ng-template *ngIf="cate =='Material' ">
+    <ng-template *ngFor="let subdiv of cate | keyvalue">
+      <ng-template *ngFor="let icon of subdiv | keyvalue">
+        <div class="center" >
+          <span class="material-icons" >{{icon}}</span>
+        <span class="icon-item-title">{{icon}}</span>
+      </div>
+    </ng-template>
+  </ng-template>
+</ng-template>
+  </div>
 
   <mat-dialog-content class="mat-typography">
   <div class="container-fluid" style="display:inline-block;">
