@@ -1,0 +1,29 @@
+<div class="position">
+  <form #userForm="ngForm" novalidate>
+
+   <!-- {{userForm.value | json}}-->
+
+    <div class="form-group">
+    <input type="text" placeholder="Input1" required #in1="ngModel" class="form-control" [class.is-invalid]="in1.invalid && in1.touched" name="inpu1" [(ngModel)]="input1">
+    <small class="text-danger" [class.d-none]="in1.valid || in1.untouched">input1 is required</small>
+    </div>
+
+
+    <div class="form-group">
+    <label for="cars">Operation: </label>
+    <select class="custom-select" #op="ngModel" (blur)="validateTopic(op.value)" (change)="validateTopic(op.value)"  [class.is-invalid]="topicHasError && op.touched" name="operator" [(ngModel)]="operatorChosen" >
+      <option value="Select" selected>Select</option>
+      <option *ngFor="let operator of operators">{{ operator }}</option>
+    </select>
+    <small class="text-danger" [class.d-none]="!topicHasError || op.untouched"> Please choose a topic</small>
+  </div>
+
+
+  <div class="form-group">
+    <input type="text" placeholder="Input2"  required #in2="ngModel" class="form-control" [class.is-invalid]="in2.invalid && in2.touched" name="input2" [(ngModel)]="input2">
+    <small class="text-danger" [class.d-none]="in2.valid || in2.untouched">input2 is required</small>
+    </div>
+
+    <button (click)="getResult()" class="btn btn-primary" [disabled]="userForm.form.invalid || topicHasError" type="submit">Submit</button>
+  </form>
+  </div>

@@ -1,0 +1,214 @@
+<!-- Top row ( consisting of Icon categories and search bar)
+
+  <div class="row">
+  <button mat-raised-button [matMenuTriggerFor]="categpries">{{titleChosen}}</button>
+  <mat-menu #categpries="matMenu">
+    <button mat-menu-item [matMenuTriggerFor]="Material">Material</button>
+    <button mat-menu-item [matMenuTriggerFor]="Icofont">Icofont</button>
+  </mat-menu>
+
+
+  <mat-menu #Material="matMenu">
+    <div *ngFor="let icon of IconPicker.Material |keyvalue">
+      <button mat-menu-item (click)="selectIcon(selectedOption = icon.key,'Material')">
+        {{icon.key}}
+      </button>
+    </div>
+  </mat-menu>
+
+  <mat-menu #Icofont="matMenu">
+    <div *ngFor="let icon of IconPicker.IcoFont | keyvalue">
+      <button mat-menu-item (click)="selectIcon(selectedOption = icon.key,'IcoFont')">
+        {{icon.key}}
+      </button>
+    </div>
+  </mat-menu>
+
+
+  &nbsp;&nbsp;
+  <form class="example-form">
+
+    <input type="text" [(ngModel)]="name" name="Search"
+           placeholder="Search icon"
+           [formControl]="control"
+           [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete">
+      <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
+        {{street}}
+      </mat-option>
+    </mat-autocomplete>
+
+  </form>
+
+</div>
+<br>
+
+
+
+<mat-dialog-content class="mat-typography">
+<div class="row">
+  <div class="col-sm-2" (click)="changeIcon(name)" >
+      <div class="center" >
+        <mat-icon>{{name}} </mat-icon>
+        <p style="word-wrap: break-word;">{{name}}</p>
+      </div>
+   </div>
+
+   <div class="col-md-2" (click)="changeIcon('icofont icofont-'+name)" ng-repeat="x in IconPicker.IcoFont.WebApplication | filter : name">
+    <div class="center" >
+      <mat-icon>  <span [class]="'icofont icofont-'+name" ></span> </mat-icon>
+      <span class="icon-item-title">{{name}}</span>
+    </div>
+  </div>
+</div>
+
+Top row ends here
+-->
+
+
+<!-- Check for IconPicker.json file having values as tag
+
+  <div class="row" style="display:flex;">
+          <div class="col-sm-2"  *ngFor="let icon of products.Material.Action | keyvalue" title={{icon}} (click)="changeIcon(icon)">
+            <div class="center" >
+          <div> <span>{{icon.key}}</span></div>
+        <div> {{icon.value}}</div>
+            </div>
+           </div>
+          </div>  -->
+
+  <!--       Display of Icons category wise
+
+  <div class="container-fluid">
+    <div class="row ">
+
+  <div class="col-md-2" *ngFor="let icon of IfullPath" title={{icon}} (click)="changeIcon('icofont '+icon)">
+    <div class="ibox" >
+
+      <mat-icon>  <span [class]="'icofont '+icon" ></span> </mat-icon>
+
+      <span class="icon-item-title">{{icon}}</span>
+    </div>
+  </div>
+
+  <div class="col-md-2" *ngFor="let icon of MfullPath" title={{icon}} (click)="changeIcon(icon)">
+    <div class="ibox" >
+
+        <span class="material-icons" >{{icon}}</span>
+
+      <span class="icon-item-title">{{icon}}</span>
+    </div>
+  </div>
+
+  </div>
+  </div>
+
+  Ends here
+  -->
+
+
+  <mat-dialog-content class="mat-typography">
+  <div class="container-fluid" style="display:inline-block;">
+
+    <div class="row" style="height: 300px;" >
+
+      <div class="container">
+          <div class="top-left"><h4>IcoFont / WebApplication</h4></div>
+          <div class="top-right"><button mat-raised-button (click)="togglePanel1()">More<mat-icon>{{icon1  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon></button></div>
+      </div>
+      <div class="row" style="display:flex;"  >
+        <div class="col-sm-2 centered icon-item-container" *ngFor="let icon of IconPicker.IcoFont.WebApplication | slice:0:6; let i=index" title={{icon}} (click)="changeIcon('icofont '+icon)">
+            <mat-icon>  <span [class]="'icofont '+icon" ></span> </mat-icon>
+            <span class="icon-item-title">{{icon}}</span>
+      </div>
+        </div>
+
+        <mat-accordion>
+          <div [hidden]="panelOpenState1">
+            <div class="row">
+              <div class="col-sm-2 " *ngFor="let icon of IconPicker.IcoFont.WebApplication | slice:6;" title={{icon}} (click)="changeIcon(icon)">
+                <div class="center" >
+                  <mat-icon>  <span [class]="'icofont '+icon" ></span> </mat-icon>
+                     <span class="icon-item-title">{{icon}}</span>
+                </div>
+               </div>
+              </div>
+          </div>
+        </mat-accordion>
+
+        <br>
+
+
+        <div class="container">
+          <div class="top-left"><h4>IcoFont / Currency</h4></div>
+          <div class="top-right"><button mat-raised-button (click)="togglePanel2()">More<mat-icon>{{icon2  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon></button></div>
+      </div>
+        <div class="row" style="display:flex;"  >
+          <div class="col-sm-2 centered icon-item-container" *ngFor="let icon of IconPicker.IcoFont.Currency | slice:0:6; let i=index" title={{icon}} (click)="changeIcon('icofont '+icon)">
+              <mat-icon>  <span [class]="'icofont '+icon" ></span> </mat-icon>
+              <span class="icon-item-title">{{icon}}</span>
+          </div>
+          </div>
+
+          <mat-accordion>
+            <div [hidden]="panelOpenState2">
+              <div class="row">
+                <div class="col-sm-2 " *ngFor="let icon of IconPicker.IcoFont.Currency | slice:6;" title={{icon}} (click)="changeIcon('icofont '+icon)">
+                  <div class="center" >
+                    <mat-icon>  <span [class]="'icofont '+icon" ></span> </mat-icon>
+                     <span class="icon-item-title">{{icon}}</span>
+                  </div>
+                 </div>
+                </div>
+            </div>
+          </mat-accordion>
+
+          <br>
+
+          <div class="container">
+            <div class="top-left"><h4>Material / Action</h4></div>
+            <div class="top-right"><button mat-raised-button (click)="togglePanel3()">More<mat-icon>{{icon3  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon></button></div>
+        </div>
+        <div class="row" style="display:flex;">
+          <div class="col-sm-2"  *ngFor="let icon of IconPicker.Material.Action | slice:0:6; let i=index" title={{icon}} (click)="changeIcon(icon)">
+            <div class="center" >
+              <mat-icon>    <span class="material-icons" >{{icon}}</span> </mat-icon>
+              <p style="word-wrap: break-word;">{{icon}}</p>
+            </div>
+           </div>
+          </div>
+
+          <mat-accordion>
+            <div [hidden]="panelOpenState3">
+              <div class="row" style="display:flex;">
+                <div class="col-sm-2 " *ngFor="let icon of IconPicker.Material.Action | slice:6;" title={{icon}} (click)="changeIcon(icon)">
+                  <div class="center" >
+                    <mat-icon>    <span class="material-icons" >{{icon}}</span> </mat-icon>
+                    <p style="word-wrap: break-word;">{{icon}}</p>
+                  </div>
+                 </div>
+                </div>
+            </div>
+          </mat-accordion>
+
+          <br>
+
+          <div class="container">
+            <div class="top-left"><h4>Material / Alert</h4></div>
+          </div>
+            <div class="row" style="display:flex;">
+              <div class="col-sm-2"  *ngFor="let icon of IconPicker.Material.Alert" title={{icon}} (click)="changeIcon(icon)">
+                <div class="center" >
+                  <mat-icon>    <span class="material-icons" >{{icon}}</span> </mat-icon>
+                  <p style="word-wrap: break-word;">{{icon}}</p>
+                </div>
+               </div>
+              </div>
+
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>
+

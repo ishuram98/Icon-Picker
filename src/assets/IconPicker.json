@@ -1,0 +1,25 @@
+{
+  "IcoFont": {
+    "WebApplication": {
+      "icofont icofont-addons": "<span class=\"icofont icofont-addons\"></span>",
+      "icofont icofont-address-book": "<span class=\"icofont icofont-address-book\"></span>"
+  },
+    "Currency": {
+      "icofont-rupee": "<span class=\"icofont icofont-rupee\"></span>",
+      "icofont-dollar":" <span class=\"icofont icofont-dollar\"></span>",
+      "icofont-euro": "<span class=\"icofont icofont-euro\"></span>",
+      "icofont-pound": "<span class=\"icofont icofont-pound\"></span>"
+    }
+  },
+ "Material": {
+    "Action": {
+      "alarm": "<span class=\"material-icons\">alarm</span>",
+      "analytics": "<span class=\"material-icons\">analytics</span>"
+    },
+    "alert": {
+      "add_alert":"<span class=\"material-icons\">error</span>",
+      "warning": "<span class=\"material-icons\">warning</span>"
+    }
+  }
+}
+

@@ -1,0 +1,37 @@
+<div>
+  <div class="position">
+  <mat-card>
+    <div class="row">
+   <!-- <div><mat-icon><span [class]="val"></span>{{icon}}</mat-icon></div>-->
+
+    <div><mat-icon [class]="val">{{icon}}</mat-icon></div>
+  <!-- <div><mat-icon>(click)="changeIcon('icofont icofont-at')">{{icon}}</mat-icon></div>-->
+  &nbsp;<div><button mat-raised-button (click)="openDialog()">Pick Icon</button></div>
+</div>
+</mat-card>
+</div>
+<!--  <div><button mat-button (click)="openDialog()">Open dialog</button></div> -->
+
+    <div><h2 style="text-align:center">Result :{{total}} </h2></div>
+    <div style="width:100%"  id="container">
+      <highcharts-chart
+      [Highcharts]="Highcharts" [options]="chartOptions"
+      style="height: 400px; display: block; min-width:0px;"></highcharts-chart>
+  </div>
+</div>
+
+
+  <!--<div>
+
+    assign icon='done' ;  for material android testing !!!
+
+    <div><mat-icon (click)="changeIconn('android')">{{icon}}</mat-icon></div>
+    <div><h2 style="text-align:center">Result :{{total}} </h2></div>
+    <div style="width:100%"  id="container">
+      <highcharts-chart
+      [Highcharts]="Highcharts" [options]="chartOptions"
+      style="height: 400px; display: block; min-width:0px;"></highcharts-chart>
+  </div>
+</div>-->
+
+

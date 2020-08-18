@@ -1,0 +1,8 @@
+ul li {
+  list-style: none;
+}
+
+.headCentre{
+   display: block;
+  margin: 0 auto;
+}

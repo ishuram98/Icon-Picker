@@ -1,0 +1,23 @@
+.mat-icon{
+  position: relative;
+  padding: 0 20px;
+  top: 5px;
+}
+
+.position {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+mat-card {
+  width:150px;
+  height: 70px;
+  display: block;
+  margin: 0 auto;
+}
+
+.centrePosition{ text-align: center; }
+
