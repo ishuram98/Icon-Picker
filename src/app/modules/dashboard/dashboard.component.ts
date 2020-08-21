@@ -224,7 +224,12 @@ export class DialogElementsExampleDialog implements OnInit {
 
   control = new FormControl();
   streets: string[] = ['alarm', 'dashboard', 'warning', 'android', 'camera', 'check'];
-  filteredStreets: Observable<string[]>;
+  filteredIcons: Observable<string[]>;
+
+  data = [
+    {header: 'HEADER 1', content: 'CONTENT 1', hidden: false},
+    {header: 'HEADER 2', content: 'CONTENT 2', hidden: false},
+  ];
 
   public IcoFontCategories = {
     IcoFont: ['WebApplication', 'Currency'],
@@ -290,14 +295,30 @@ export class DialogElementsExampleDialog implements OnInit {
     }
   };
 
+
+
   constructor(private dashboardService: DashboardService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
-    this.filteredStreets = this.control.valueChanges.pipe(
+    this.filteredIcons = this.control.valueChanges.pipe(
       startWith(''),
       map(value => this._filter(value))
     );
   }
+
+  toggle(hidden): void {
+    console.log(hidden);
+    hidden = !hidden;
+   //  this.togglee(hidden);
+    console.log(hidden);
+  }
+
+  togglee(hidden): void {
+    console.log(hidden);
+    hidden = hidden;
+    console.log(hidden);
+  }
+
 
   private _filter(value: string): string[] {
     const filterValue = this._normalizeValue(value);
@@ -333,8 +354,6 @@ else{
 }
 
 console.log(selIcon);
-
-
 
  }
 
