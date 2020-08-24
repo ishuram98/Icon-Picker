@@ -249,7 +249,7 @@ export class DialogElementsExampleDialog implements OnInit {
           'icofont-dashboard',
           'icofont-download',
           'icofont-brand-android-robot'],
-        hidden: false
+        hidden: true
       },
       Currency: {
         content: [
@@ -265,7 +265,7 @@ export class DialogElementsExampleDialog implements OnInit {
           'icofont-frank',
           'icofont-peso',
           'icofont-riyal'],
-        hidden: false
+        hidden: true
       }
     },
     Material: {
@@ -308,11 +308,10 @@ export class DialogElementsExampleDialog implements OnInit {
     );
   }
 
-  toggle(hidden): void {
-    console.log(hidden);
-    hidden = !hidden;
-    //  this.togglee(hidden);
-    console.log(hidden);
+  toggle(subdiv): void {
+    console.log(subdiv.hidden);
+    subdiv.hidden = !subdiv.hidden;
+    console.log(subdiv.hidden);
   }
 
   private _filter(value: string): string[] {
