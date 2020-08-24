@@ -205,10 +205,6 @@ export class DashboardComponent implements OnInit {
 })
 // tslint:disable-next-line: component-class-suffix
 export class DialogElementsExampleDialog implements OnInit {
-  panelOpenState1 = true;
-  panelOpenState2 = true;
-  panelOpenState3 = true;
-  panelOpenState4 = true;
   icon1 = false;
   icon2 = false;
   icon3 = false;
@@ -302,11 +298,6 @@ export class DialogElementsExampleDialog implements OnInit {
     }
   };
 
-  data = [
-    { header: 'HEADER 1', content: 'CONTENT 1', hidden: false },
-    { header: 'HEADER 2', content: 'CONTENT 2', hidden: false },
-  ];
-
   constructor(private dashboardService: DashboardService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -357,28 +348,6 @@ export class DialogElementsExampleDialog implements OnInit {
 
     console.log(selIcon);
 
-  }
-
-
-  togglePanel1(): void {
-    console.log(name);
-    this.panelOpenState1 = !this.panelOpenState1;
-    this.icon1 = !this.icon1;
-  }
-
-  togglePanel2(): void {
-    this.panelOpenState2 = !this.panelOpenState2;
-    this.icon2 = !this.icon2;
-  }
-
-  togglePanel3(): void {
-    this.panelOpenState3 = !this.panelOpenState3;
-    this.icon3 = !this.icon3;
-  }
-
-  togglePanel4(): void {
-    this.panelOpenState4 = !this.panelOpenState4;
-    this.icon4 = !this.icon4;
   }
 
   completeM(name: string): void {

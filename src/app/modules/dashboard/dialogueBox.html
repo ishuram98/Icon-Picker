@@ -6,13 +6,14 @@
     <button mat-menu-item [matMenuTriggerFor]="Icofont">Icofont</button>
   </mat-menu>
 
-  <mat-menu #Material="matMenu">
+  <!--<mat-menu #Material="matMenu">
     <div *ngFor="let icon of IconPicker.Material |keyvalue">
       <button mat-menu-item (click)="selectIcon(selectedOption = icon.key,'Material')">
         {{icon.key}}
       </button>
     </div>
-  </mat-menu>
+  </mat-menu>-->
+
 
   <mat-menu #Icofont="matMenu">
     <div *ngFor="let icon of IconPicker.IcoFont | keyvalue">
@@ -75,6 +76,15 @@
 
     <!-- Providing ngIf condition for IcoFont and Material -->
     <ng-container *ngFor="let category of IconPicker | keyvalue">
+      <div *ngIf="category.key ==='Material' ">
+      <mat-menu #Material="matMenu">
+        <div *ngFor="let iicon of IconPicker.Material |keyvalue">
+          <button mat-menu-item (click)="selectIcon(selectedOption = iicon.key,'Material')">
+            {{iicon.key}}
+          </button>
+        </div>
+      </mat-menu>
+    </div>
       <ng-container *ngFor="let subdivision of category.value | keyvalue">
         <ng-container *ngFor="let subdiv of subdivision.value | keyvalue">
           <ng-container *ngIf="subdiv.key =='content' ">
@@ -124,6 +134,7 @@
                 </mat-accordion>
               </ng-container>
             </div>
+            <br>
           </ng-container>
         </ng-container>
       </ng-container>
