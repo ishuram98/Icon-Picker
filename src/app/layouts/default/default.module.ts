@@ -18,7 +18,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     FormsModule,
     ReactiveFormsModule,
     MatExpansionModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    Ng2SearchPipeModule
   ]
 })
 export class DefaultModule { }

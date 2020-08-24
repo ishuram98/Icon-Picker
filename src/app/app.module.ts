@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatDialogModule} from '@angular/material/dialog';
 import { MatButtonModule } from '@angular/material/button';
 import {MatAutocompleteModule} from '@angular/material/autocomplete';
-
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
 
 @NgModule({
   declarations: [
@@ -25,7 +25,8 @@ import {MatAutocompleteModule} from '@angular/material/autocomplete';
     MatDialogModule,
     MatIconModule,
     MatButtonModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

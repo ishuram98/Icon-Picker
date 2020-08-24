@@ -1,13 +1,13 @@
 import { DashboardService } from 'src/app/modules/dashboard/dashboard.service';
-import { Component, OnInit, Input, Directive} from '@angular/core';
+import { Component, OnInit, Input, Directive } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import HC_exporting from 'highcharts/modules/exporting';
-import {MatDialog} from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import * as IconPickerOb from 'src/assets/IconPicker.json';
 import { ReadPropExpr } from '@angular/compiler';
-import {FormControl, ReactiveFormsModule} from '@angular/forms';
-import {Observable} from 'rxjs';
-import {startWith, map} from 'rxjs/operators';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { Observable } from 'rxjs';
+import { startWith, map } from 'rxjs/operators';
 
 
 
@@ -23,7 +23,7 @@ export class DashboardComponent implements OnInit {
   input1: number;
   input2: number;
   total: number;
-  public icon ;
+  public icon;
   // public val = 'icofont icofont-airplane';
   public val;
 
@@ -37,80 +37,80 @@ export class DashboardComponent implements OnInit {
         this.total = data.total;
 
         this.chartOptions = {
-        chart: {
-          plotBackgroundColor: null,
-          plotBorderWidth: null,
-          plotShadow: false,
-          type: 'pie'
-        },
-        title: {
-          text: 'Result Pie Chart '
-        },
-        tooltip: {
-          pointFormat: '{series.name}: <b>{point.y}</b>'
-        },
-        plotOptions: {
-          pie: {
-            allowPointSelect: true,
-            cursor: 'pointer',
-            dataLabels: {
-              enabled: true,
-              format: '<b>{point.name}</b>: {point.y}'
-            },
-            showInLegend: true
-          }
-        },
-        exporting: {
-          enabled: true
-        },
-        credits: {
-          enabled: false
-        },
-        series:  [{
-          name: 'Value',
-          colorByPoint: true,
-          data: [{
-            name: 'Input1',
-            y: this.input1,
-            sliced: true,
-            selected: true,
-          }, {
-            name: 'Input2',
-            y: this.input2,
-          }, {
-            name: 'Result',
-            y: this.total,
-          }]
-        }],
-      };
+          chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false,
+            type: 'pie'
+          },
+          title: {
+            text: 'Result Pie Chart '
+          },
+          tooltip: {
+            pointFormat: '{series.name}: <b>{point.y}</b>'
+          },
+          plotOptions: {
+            pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.y}'
+              },
+              showInLegend: true
+            }
+          },
+          exporting: {
+            enabled: true
+          },
+          credits: {
+            enabled: false
+          },
+          series: [{
+            name: 'Value',
+            colorByPoint: true,
+            data: [{
+              name: 'Input1',
+              y: this.input1,
+              sliced: true,
+              selected: true,
+            }, {
+              name: 'Input2',
+              y: this.input2,
+            }, {
+              name: 'Result',
+              y: this.total,
+            }]
+          }],
+        };
 
-       // tslint:disable-next-line: no-string-literal
+        // tslint:disable-next-line: no-string-literal
         console.log(this.chartOptions['series'][0].data[0]['y']);
-       // tslint:disable-next-line: no-string-literal
+        // tslint:disable-next-line: no-string-literal
         console.log(this.chartOptions['series'][0].data[1]['y']);
-      // tslint:disable-next-line: no-string-literal
+        // tslint:disable-next-line: no-string-literal
         console.log(this.chartOptions['series'][0].data[2]['y']);
 
-     //   Highcharts('container', this.chartOptions);
+        //   Highcharts('container', this.chartOptions);
 
         HC_exporting(Highcharts);
 
         setTimeout(() => {
-        window.dispatchEvent(
-          new Event('resize')
-        );
-      }, 300);
+          window.dispatchEvent(
+            new Event('resize')
+          );
+        }, 300);
 
-    }
+      }
     );
     this.dashboardService.resultI$.subscribe(
       (iconn) => {
-        if (iconn.search('icofont') === -1){
+        if (iconn.search('icofont') === -1) {
           console.log(this.icon);
           this.icon = iconn;
           this.val = iconn;
         }
-        else{
+        else {
           this.icon = '';
           this.val = iconn;
         }
@@ -124,16 +124,16 @@ export class DashboardComponent implements OnInit {
       (iconn) => {
         this.val = iconn;
       });
-}
-public changeIconn(newIcon: string): void {
-   this.icon = newIcon;
-}
+  }
+  public changeIconn(newIcon: string): void {
+    this.icon = newIcon;
+  }
 
-openDialog(): void {
-  const dialogRef = this.dialog.open(DialogElementsExampleDialog, {
-    width: '500px',
-  });
-}
+  openDialog(): void {
+    const dialogRef = this.dialog.open(DialogElementsExampleDialog, {
+      width: '500px',
+    });
+  }
 
   PieChart(): void {
     this.chartOptions = {
@@ -166,7 +166,7 @@ openDialog(): void {
       credits: {
         enabled: false
       },
-      series:  [{
+      series: [{
         name: 'Value',
         colorByPoint: true,
         data: [{
@@ -219,17 +219,13 @@ export class DialogElementsExampleDialog implements OnInit {
   public titleChosen = 'Icon Categories';
   Object = Object;
 
-   products: any = (IconPickerOb as any).default;
+  products: any = (IconPickerOb as any).default;
   // prod = [this.products];
 
   control = new FormControl();
   streets: string[] = ['alarm', 'dashboard', 'warning', 'android', 'camera', 'check'];
   filteredIcons: Observable<string[]>;
 
-  data = [
-    {header: 'HEADER 1', content: 'CONTENT 1', hidden: false},
-    {header: 'HEADER 2', content: 'CONTENT 2', hidden: false},
-  ];
 
   public IcoFontCategories = {
     IcoFont: ['WebApplication', 'Currency'],
@@ -241,33 +237,36 @@ export class DialogElementsExampleDialog implements OnInit {
 
   public IconPicker = {
     IcoFont: {
-      WebApplication: [
-        'icofont-addons',
-        'icofont-address-book',
-        'icofont-alarm',
-        'icofont-camera',
-        'icofont-card',
-        'icofont-cart',
-        'icofont-chat',
-        'icofont-data',
-        'icofont-dashboard',
-        'icofont-download',
-        'icofont-brand-android-robot'
-      ],
-      Currency: [
-        'icofont-rupee',
-        'icofont-dollar',
-        'icofont-euro',
-        'icofont-pound',
-        'icofont-bitcoin',
-        'icofont-yen',
-        'icofont-baht',
-        'icofont-afghani',
-        'icofont-dong',
-        'icofont-frank',
-        'icofont-peso',
-        'icofont-riyal',
-      ]
+      WebApplication: {
+        content: ['icofont-addons',
+          'icofont-address-book',
+          'icofont-alarm',
+          'icofont-camera',
+          'icofont-card',
+          'icofont-cart',
+          'icofont-chat',
+          'icofont-data',
+          'icofont-dashboard',
+          'icofont-download',
+          'icofont-brand-android-robot'],
+        hidden: false
+      },
+      Currency: {
+        content: [
+          'icofont-rupee',
+          'icofont-dollar',
+          'icofont-euro',
+          'icofont-pound',
+          'icofont-bitcoin',
+          'icofont-yen',
+          'icofont-baht',
+          'icofont-afghani',
+          'icofont-dong',
+          'icofont-frank',
+          'icofont-peso',
+          'icofont-riyal'],
+        hidden: false
+      }
     },
     Material: {
       Action: [
@@ -295,7 +294,10 @@ export class DialogElementsExampleDialog implements OnInit {
     }
   };
 
-
+  data = [
+    { header: 'HEADER 1', content: 'CONTENT 1', hidden: false },
+    { header: 'HEADER 2', content: 'CONTENT 2', hidden: false },
+  ];
 
   constructor(private dashboardService: DashboardService, public dialog: MatDialog) { }
 
@@ -309,16 +311,9 @@ export class DialogElementsExampleDialog implements OnInit {
   toggle(hidden): void {
     console.log(hidden);
     hidden = !hidden;
-   //  this.togglee(hidden);
+    //  this.togglee(hidden);
     console.log(hidden);
   }
-
-  togglee(hidden): void {
-    console.log(hidden);
-    hidden = hidden;
-    console.log(hidden);
-  }
-
 
   private _filter(value: string): string[] {
     const filterValue = this._normalizeValue(value);
@@ -333,32 +328,32 @@ export class DialogElementsExampleDialog implements OnInit {
     console.log(this.products);
     this.ficon = newIcon;
     this.dashboardService.sendIcon(this.ficon);
-}
-
-public selectIcon(selIcon: string, category: string): void{
-
-this.titleChosen = category + '/' + selIcon;
-if (category === 'IcoFont'){
-  this.MfullPath = [];
-  switch (selIcon){
-  case 'WebApplication': this.IfullPath = this.IconPicker.IcoFont.WebApplication; break;
-  case 'Currency': this.IfullPath = this.IconPicker.IcoFont.Currency; break;
- }
-}
-else{
-  this.IfullPath = [];
-  switch (selIcon){
-    case 'Action': this.MfullPath = this.IconPicker.Material.Action; break;
-    case 'Alert': this.MfullPath = this.IconPicker.Material.Alert; break;
   }
-}
 
-console.log(selIcon);
+  public selectIcon(selIcon: string, category: string): void {
 
- }
+    this.titleChosen = category + '/' + selIcon;
+    if (category === 'IcoFont') {
+      this.MfullPath = [];
+      switch (selIcon) {
+        case 'WebApplication': this.IfullPath = this.IconPicker.IcoFont.WebApplication; break;
+        case 'Currency': this.IfullPath = this.IconPicker.IcoFont.Currency; break;
+      }
+    }
+    else {
+      this.IfullPath = [];
+      switch (selIcon) {
+        case 'Action': this.MfullPath = this.IconPicker.Material.Action; break;
+        case 'Alert': this.MfullPath = this.IconPicker.Material.Alert; break;
+      }
+    }
+
+    console.log(selIcon);
+
+  }
 
 
-   togglePanel1(): void {
+  togglePanel1(): void {
     console.log(name);
     this.panelOpenState1 = !this.panelOpenState1;
     this.icon1 = !this.icon1;
@@ -379,28 +374,28 @@ console.log(selIcon);
     this.icon4 = !this.icon4;
   }
 
-  completeM(name: string): void{
+  completeM(name: string): void {
     for (const prop of this.products.Material) {
-      for (const propp of prop){
+      for (const propp of prop) {
         if (prop.hasOwnProperty(propp)) {
           if (prop[propp].search(name)) {
             console.log(prop);
             this.name = name;
           }
-      }
+        }
       }
     }
-}
+  }
 
-completeI(name: string): void{
-  for (const category of this.products.IcoFont) {
-    for (const prop in category){
-        if (category[prop].search(name) !== -1 ){
+  completeI(name: string): void {
+    for (const category of this.products.IcoFont) {
+      for (const prop in category) {
+        if (category[prop].search(name) !== -1) {
           console.log(prop);
           this.name = name;
         }
 
+      }
     }
   }
-}
 }
