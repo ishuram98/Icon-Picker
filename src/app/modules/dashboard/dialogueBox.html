@@ -47,134 +47,85 @@
     </form>
   </div>
 </div>
+
+<div class="mat-typography">
+  <div class="row">
+    <div class="col-sm-2" (click)="changeIcon(name)">
+      <div class="center">
+        <mat-icon>{{name}} </mat-icon>
+        <p style="word-wrap: break-word;">{{name}}</p>
+      </div>
+    </div>
+
+    <div class="col-md-2" (click)="changeIcon('icofont icofont-'+name)"
+      ng-repeat="x in IconPicker.IcoFont.WebApplication | filter : name">
+      <div class="center">
+        <mat-icon> <span [class]="'icofont icofont-'+name"></span> </mat-icon>
+        <span class="icon-item-title">{{name}}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
 <br>
 
 
 <mat-dialog-content class="mat-typography">
   <div class="container-fluid" style="display:inline-block;">
 
-    <div class="mat-typography">
-      <div class="row">
-        <div class="col-sm-2" (click)="changeIcon(name)">
-          <div class="center">
-            <mat-icon>{{name}} </mat-icon>
-            <p style="word-wrap: break-word;">{{name}}</p>
-          </div>
-        </div>
-
-        <div class="col-md-2" (click)="changeIcon('icofont icofont-'+name)"
-          ng-repeat="x in IconPicker.IcoFont.WebApplication | filter : name">
-          <div class="center">
-            <mat-icon> <span [class]="'icofont icofont-'+name"></span> </mat-icon>
-            <span class="icon-item-title">{{name}}</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-    <!-- <mat-expansion-panel [(ngModel)]="d.hidden" [expanded]="d.hidden" *ngFor="let d of data" ngDefaultControl [ngModelOptions]="{standalone: true}" >
-    <mat-expansion-panel-header>
-        <button (click)="toggle(d.hidden)">TOGGLE</button>
-        {{ d.header }}
-    </mat-expansion-panel-header>
-    <p>{{ d.content }}</p>
-</mat-expansion-panel>-->
-
-
-    <!-- Dynamic generation of drop down box using sample data
-    <div *ngFor="let d of data" >
-    {{ d.header }}
-    <button (click)="toggle(d.hidden)" >TOGGLE</button>
-    <div [hidden]="d.hidden"  [(ngModel)]="d.hidden" ngDefaultControl name="toggle" [ngModelOptions]="{standalone: true}">
-       <p> {{ d.hidden }} {{ d.content }}</p>
-    </div>
-  </div> -->
-
     <!-- Providing ngIf condition for IcoFont and Material -->
     <ng-container *ngFor="let category of IconPicker | keyvalue">
-      <ng-container *ngIf="category.key ==='IcoFont' ">
-        <ng-container *ngFor="let subdivision of category.value | keyvalue">
-          <ng-container *ngFor="let subdiv of subdivision.value | keyvalue">
-            <ng-container *ngIf="subdiv.key =='content' ">
-              <div class="container">
-                <div class="top-left">
-                  <h4>{{category.key}}/{{subdivision.key}}</h4>
-                </div>
-                <div class="top-right"><button mat-raised-button (click)="toggle(subdivision.value)">More<mat-icon>
-                      {{icon1  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon></button></div>
-              </div>
-              <div class="row" style="display:flex;">
-                <ng-container>
-                  <div class="col-sm-2" *ngFor="let icon of subdiv.value | slice:0:6;" title={{icon}}
-                    (click)="changeIcon('icofont '+icon)">
-                    <div class="center">
-                      <mat-icon> <span [class]="'icofont '+icon"></span> </mat-icon>
-                      <span class="icon-item-title">{{icon}}</span>
-                    </div>
-                  </div>
-
-                  <mat-accordion>
-                    <div [hidden]="subdiv['hidden']" [(ngModel)]="subdiv['hidden']" ngDefaultControl name="toggle"
-                      [ngModelOptions]="{standalone: true}">
-                      <div class="row">
-                        <div class="col-sm-2 " *ngFor="let icon of subdiv.value | slice:6;" title={{icon}}
-                          (click)="changeIcon('icofont '+icon)">
-                          <div class="center">
-                            <mat-icon> <span [class]="'icofont '+icon"></span> </mat-icon>
-                            <span class="icon-item-title">{{icon}}</span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </mat-accordion>
-                </ng-container>
-              </div>
-            </ng-container>
-          </ng-container>
-        </ng-container>
-      </ng-container>
-
-      <ng-container *ngIf="category.key ==='Material' ">
-        <div class="row" style="display:flex;">
-          <ng-container *ngFor="let subdivision of category.value | keyvalue">
+      <ng-container *ngFor="let subdivision of category.value | keyvalue">
+        <ng-container *ngFor="let subdiv of subdivision.value | keyvalue">
+          <ng-container *ngIf="subdiv.key =='content' ">
             <div class="container">
               <div class="top-left">
                 <h4>{{category.key}}/{{subdivision.key}}</h4>
               </div>
-              <div class="top-right"><button mat-raised-button (click)="togglePanel1()">More<mat-icon>
+              <div class="top-right"><button mat-raised-button (click)="toggle(subdivision.value)">More<mat-icon>
                     {{icon1  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon></button></div>
             </div>
-
-
             <div class="row" style="display:flex;">
-              <div class="col-sm-2" *ngFor="let icon of subdivision.value | slice:0:6;" title={{icon}}
-                (click)="changeIcon(icon)">
-                <div class="center">
-                  <mat-icon> <span class="material-icons">{{icon}}</span> </mat-icon>
-                  <span class="icon-item-title" style="word-wrap: break-word;">{{icon}}</span>
-                </div>
-              </div>
-            </div>
-
-            <mat-accordion>
-              <div [hidden]="panelOpenState1">
-                <div class="row" style="display:flex;">
-                  <div class="col-sm-2" *ngFor="let icon of subdivision.value | slice:6;" title={{icon}}
-                    (click)="changeIcon(icon)">
-                    <div class="center">
-                      <mat-icon> <span class="material-icons">{{icon}}</span> </mat-icon>
-                      <p style="word-wrap: break-word;">{{icon}}</p>
-                    </div>
+              <ng-container>
+                <div class="col-sm-2" *ngFor="let icon of subdiv.value | slice:0:6;" title={{icon}}>
+                  <div class="center">
+                    <ng-container *ngIf="category.key ==='IcoFont' ">
+                      <mat-icon (click)="changeIcon('icofont '+icon)"> <span [class]="'icofont '+icon"></span>
+                      </mat-icon>
+                      <span class="icon-item-title">{{icon}}</span>
+                    </ng-container>
+                    <ng-container *ngIf="category.key ==='Material' ">
+                      <mat-icon (click)="changeIcon(icon)"> <span class="material-icons">{{icon}}</span> </mat-icon>
+                      <span class="icon-item-title" style="word-wrap: break-word;">{{icon}}</span>
+                    </ng-container>
                   </div>
                 </div>
-              </div>
-            </mat-accordion>
 
-
-
+                <mat-accordion>
+                  <div [hidden]="subdivision.value['hidden']" [(ngModel)]="subdivision.value['hidden']" ngDefaultControl
+                    name="toggle" [ngModelOptions]="{standalone: true}">
+                    <div class="row">
+                      <div class="col-sm-2 " *ngFor="let icon of subdiv.value | slice:6;" title={{icon}}>
+                        <div class="center">
+                          <ng-container *ngIf="category.key ==='IcoFont' ">
+                            <mat-icon (click)="changeIcon('icofont '+icon)"> <span [class]="'icofont '+icon"></span>
+                            </mat-icon>
+                            <span class="icon-item-title">{{icon}}</span>
+                          </ng-container>
+                          <ng-container *ngIf="category.key ==='Material' ">
+                            <mat-icon (click)="changeIcon(icon)"> <span class="material-icons">{{icon}}</span>
+                            </mat-icon>
+                            <span class="icon-item-title" style="word-wrap: break-word;">{{icon}}</span>
+                          </ng-container>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </mat-accordion>
+              </ng-container>
+            </div>
           </ng-container>
-        </div>
+        </ng-container>
       </ng-container>
     </ng-container>
 

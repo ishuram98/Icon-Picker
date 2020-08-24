@@ -26,6 +26,7 @@ export class DashboardComponent implements OnInit {
   public icon;
   // public val = 'icofont icofont-airplane';
   public val;
+  public dialogRef;
 
   constructor(private dashboardService: DashboardService, public dialog: MatDialog) { }
 
@@ -105,6 +106,7 @@ export class DashboardComponent implements OnInit {
     );
     this.dashboardService.resultI$.subscribe(
       (iconn) => {
+        this.dialogRef.close();
         if (iconn.search('icofont') === -1) {
           console.log(this.icon);
           this.icon = iconn;
@@ -130,7 +132,7 @@ export class DashboardComponent implements OnInit {
   }
 
   openDialog(): void {
-    const dialogRef = this.dialog.open(DialogElementsExampleDialog, {
+    this.dialogRef = this.dialog.open(DialogElementsExampleDialog, {
       width: '500px',
     });
   }
@@ -238,7 +240,8 @@ export class DialogElementsExampleDialog implements OnInit {
   public IconPicker = {
     IcoFont: {
       WebApplication: {
-        content: ['icofont-addons',
+        content: [
+          'icofont-addons',
           'icofont-address-book',
           'icofont-alarm',
           'icofont-camera',
@@ -269,28 +272,33 @@ export class DialogElementsExampleDialog implements OnInit {
       }
     },
     Material: {
-      Action: [
-        'alarm',
-        'analytics',
-        'android',
-        'api',
-        'assessment',
-        'code',
-        'event',
-        'delete',
-        'done',
-        'description',
-        'explore',
-        'info'
-      ],
-      Alert: [
-        'add_alert',
-        'error',
-        'warning',
-        'auto_delete',
-        'notification_important',
-        'error_outline'
-      ]
+      Action: {
+        content: [
+          'alarm',
+          'analytics',
+          'android',
+          'api',
+          'assessment',
+          'code',
+          'event',
+          'delete',
+          'done',
+          'description',
+          'explore',
+          'info'],
+        hidden: true
+      },
+      Alert: {
+        content: [
+          'add_alert',
+          'error',
+          'warning',
+          'auto_delete',
+          'notification_important',
+          'error_outline'
+        ],
+        hidden: true
+      }
     }
   };
 
