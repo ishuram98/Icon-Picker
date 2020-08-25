@@ -250,7 +250,8 @@ export class DialogElementsExampleDialog implements OnInit {
           'icofont-dashboard',
           'icofont-download',
           'icofont-brand-android-robot'],
-        hidden: true
+        hidden: true,
+        toggleIcon: false
       },
       Currency: {
         content: [
@@ -266,7 +267,8 @@ export class DialogElementsExampleDialog implements OnInit {
           'icofont-frank',
           'icofont-peso',
           'icofont-riyal'],
-        hidden: true
+        hidden: true,
+        toggleIcon: false
       },
       Payment: {
         content: [
@@ -279,7 +281,8 @@ export class DialogElementsExampleDialog implements OnInit {
           'icofont-mastercard',
           'icofont-paypal',
           'icofont-visa'],
-        hidden: true
+        hidden: true,
+        toggleIcon: false
       }
     },
     Material: {
@@ -297,7 +300,8 @@ export class DialogElementsExampleDialog implements OnInit {
           'description',
           'explore',
           'info'],
-        hidden: true
+        hidden: true,
+        toggleIcon: false
       },
       Alert: {
         content: [
@@ -308,7 +312,8 @@ export class DialogElementsExampleDialog implements OnInit {
           'notification_important',
           'error_outline'
         ],
-        hidden: true
+        hidden: true,
+        toggleIcon: false
       },
       Maps: {
         content: [
@@ -323,7 +328,8 @@ export class DialogElementsExampleDialog implements OnInit {
           'restaurant',
           'traffic'
         ],
-        hidden: true
+        hidden: true,
+        toggleIcon: false
       }
     }
   };
@@ -337,10 +343,11 @@ export class DialogElementsExampleDialog implements OnInit {
     );
   }
 
-  toggle(subdiv): void {
+  toggleHidden(subdiv): void {
     console.log(subdiv.hidden);
     subdiv.hidden = !subdiv.hidden;
     console.log(subdiv.hidden);
+    subdiv.toggleIcon = !subdiv.toggleIcon;
   }
 
   private _filter(value: string): string[] {

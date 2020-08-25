@@ -28,7 +28,7 @@
 
   <div class="top-right">
     <form class="example-form">
-      <input type="text" name="Search" placeholder="Search icon" [formControl]="control" [(ngModel)]="name">
+      <input type="text" name="Search" placeholder="Search for an Icon" [formControl]="control" [(ngModel)]="name">
       <!-- <mat-autocomplete #auto="matAutocomplete">
         <mat-option *ngFor="let icon of filteredIcons | async" [value]="icon">
           {{icon}}
@@ -130,11 +130,12 @@
             <ng-container *ngIf="subdiv.key =='content' ">
               <div class="container">
                 <div class="header-left">
-                  <h3><u>{{category.key}}/{{subdivision.key}}</u></h3>
+                  <h3>{{category.key}} {{subdivision.key}} Icons</h3>
                 </div>
-                <div class="header-right"><button style="background-color: #e7e7e7; color: black;" mat-raised-button
-                    (click)="toggle(subdivision.value)">More<mat-icon>
-                      {{icon1  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon></button></div>
+                <div class="header-right">
+                  <a class="btn btn-default btn-work" *ngIf="subdivision.value['content'].length>6" mat-raised-button (click)="toggleHidden(subdivision.value)"> More<mat-icon>
+                    {{subdivision.value['toggleIcon']  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon></a>
+                </div>
               </div>
               <div class="row" style="display:flex;">
                 <ng-container>

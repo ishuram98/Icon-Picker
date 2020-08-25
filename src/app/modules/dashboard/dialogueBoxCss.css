@@ -66,3 +66,14 @@ mat-icon {
   overflow-y: auto;
 }
 
+.btn-work {
+  margin: 0 auto;
+  padding: 0;
+  display: table-cell;
+  vertical-align: middle;
+  background-color: #e7e7e7;
+  color: black;
+  font-size: 12px;
+  height:15px;
+  width:70px;
+}
