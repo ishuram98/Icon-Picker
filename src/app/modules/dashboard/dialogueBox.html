@@ -133,8 +133,11 @@
                   <h3>{{category.key}} {{subdivision.key}} Icons</h3>
                 </div>
                 <div class="header-right">
-                  <a class="btn btn-default btn-work" *ngIf="subdivision.value['content'].length>6" mat-raised-button (click)="toggleHidden(subdivision.value)"> More<mat-icon>
-                    {{subdivision.value['toggleIcon']  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}</mat-icon></a>
+                 <button class="btn btn-default btn-work" mat-raised-button style="height:30px" *ngIf="subdivision.value['content'].length>6" (click)="toggleHidden(subdivision.value)">
+                  More<mat-icon>
+                      {{subdivision.value['toggleIcon']  ? 'keyboard_arrow_up' : 'keyboard_arrow_down' }}
+                    </mat-icon>
+                  </button>
                 </div>
               </div>
               <div class="row" style="display:flex;">
