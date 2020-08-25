@@ -133,7 +133,7 @@ export class DashboardComponent implements OnInit {
 
   openDialog(): void {
     this.dialogRef = this.dialog.open(DialogElementsExampleDialog, {
-      width: '500px',
+      width: '700px', height: '410px'
     });
   }
 
@@ -209,6 +209,8 @@ export class DialogElementsExampleDialog implements OnInit {
   icon2 = false;
   icon3 = false;
   icon4 = false;
+  show = false;
+  showSearch = false;
   public ficon: string;
   public sicon: string;
   public IfullPath;
@@ -265,6 +267,19 @@ export class DialogElementsExampleDialog implements OnInit {
           'icofont-peso',
           'icofont-riyal'],
         hidden: true
+      },
+      Payment: {
+        content: [
+          'icofont-amazon',
+          'icofont-american-express',
+          'icofont-apple-pay',
+          'icofont-cash-on-delivery',
+          'icofont-google-wallet-alt-3',
+          'icofont-maestro',
+          'icofont-mastercard',
+          'icofont-paypal',
+          'icofont-visa'],
+        hidden: true
       }
     },
     Material: {
@@ -292,6 +307,21 @@ export class DialogElementsExampleDialog implements OnInit {
           'auto_delete',
           'notification_important',
           'error_outline'
+        ],
+        hidden: true
+      },
+      Maps: {
+        content: [
+          'add_location',
+          'directions',
+          'edit_location',
+          'flight',
+          'hotel',
+          'local_mall',
+          'local_pharmacy',
+          'navigation',
+          'restaurant',
+          'traffic'
         ],
         hidden: true
       }
@@ -328,25 +358,24 @@ export class DialogElementsExampleDialog implements OnInit {
     this.dashboardService.sendIcon(this.ficon);
   }
 
-  public selectIcon(selIcon: string, category: string): void {
+  public selectIcon(subCategory: string, category: string, mode: boolean): void {
 
-    this.titleChosen = category + '/' + selIcon;
+    this.titleChosen = category + '/' + subCategory;
     if (category === 'IcoFont') {
       this.MfullPath = [];
-      switch (selIcon) {
-        case 'WebApplication': this.IfullPath = this.IconPicker.IcoFont.WebApplication; break;
-        case 'Currency': this.IfullPath = this.IconPicker.IcoFont.Currency; break;
-      }
+      this.IfullPath = subCategory;
+      this.show = mode;
     }
-    else {
+    if (category === 'Material') {
       this.IfullPath = [];
-      switch (selIcon) {
-        case 'Action': this.MfullPath = this.IconPicker.Material.Action; break;
-        case 'Alert': this.MfullPath = this.IconPicker.Material.Alert; break;
+      switch (subCategory) {
+        case 'Action': this.MfullPath = this.IconPicker.Material.Action.content; break;
+        case 'Alert': this.MfullPath = this.IconPicker.Material.Alert.content; break;
       }
+      this.show = mode;
     }
 
-    console.log(selIcon);
+    console.log(subCategory);
 
   }
 
